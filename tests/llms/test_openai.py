@@ -22,9 +22,9 @@ def test_openai_llm_base_url():
     # Note: openai client will parse the raw base_url into a URL object, which will have a trailing slash
     assert str(llm.client.base_url) == "https://api.openai.com/v1/"
 
-    # case2: with env variable OPENAI_API_BASE
+    # case2: with env variable OPENAI_BASE_URL
     provider_base_url = "https://api.provider.com/v1"
-    os.environ["OPENAI_API_BASE"] = provider_base_url
+    os.environ["OPENAI_BASE_URL"] = provider_base_url
     config = BaseLlmConfig(model="gpt-4o", temperature=0.7, max_tokens=100, top_p=1.0, api_key="api_key")
     llm = OpenAILLM(config)
     # Note: openai client will parse the raw base_url into a URL object, which will have a trailing slash
